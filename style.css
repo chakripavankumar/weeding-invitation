@@ -1,0 +1,51 @@
+.curtain {
+  background-image: url("./assets/curtain-closed.jpg");
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+#curtainWrapper {
+  pointer-events: none;
+  overflow: hidden; /* Prevents overflow during animation */
+}
+.hero-text {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.hero-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tap-circle {
+  animation: pulse 1.5s infinite;
+}
+
+.scroll-float {
+  animation: floatY 2s ease-in-out infinite;
+}
+
+@keyframes floatY {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
