@@ -74,17 +74,7 @@ document.querySelectorAll("canvas").forEach((canvas) => {
     const sx = (img.width - size) / 2;
     const sy = (img.height - size) / 2;
 
-    ctx.drawImage(
-      img,
-      sx,
-      sy,
-      size,
-      size,
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
+    ctx.drawImage(img, sx, sy, size, size, 0, 0, canvas.width, canvas.height);
 
     // ✅ FIX 2: FORCE PERFECT CIRCLE MASK
     ctx.globalCompositeOperation = "destination-in";
@@ -94,7 +84,7 @@ document.querySelectorAll("canvas").forEach((canvas) => {
       canvas.height / 2,
       canvas.width / 2,
       0,
-      Math.PI * 2
+      Math.PI * 2,
     );
     ctx.closePath();
     ctx.fill();
@@ -108,7 +98,7 @@ document.querySelectorAll("canvas").forEach((canvas) => {
       10,
       canvas.width / 2,
       canvas.height / 2,
-      canvas.width
+      canvas.width,
     );
 
     gradient.addColorStop(0, "rgba(255,255,255,0.35)");

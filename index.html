@@ -17,7 +17,6 @@
   </head>
 
   <body class="bg-[#f8f1e7] overflow-x-hidden">
-
     <!-- ================= HERO ================= -->
     <section
       id="hero"
@@ -86,7 +85,8 @@
           <p
             class="hero-text font-[Cinzel] text-[11px] sm:text-[16px] tracking-wide text-[#7a1f1f]"
           >
-            We would like to invite you to celebrate with us the most special day of our life.
+            We would like to invite you to celebrate with us the most special
+            day of our life.
           </p>
         </div>
       </div>
@@ -97,38 +97,63 @@
         class="absolute bottom-6 left-0 right-0 flex justify-center opacity-0 transition-opacity duration-700 z-10"
       >
         <div class="flex flex-col items-center scroll-float">
-          <p class="font-[Cinzel] text-[10px] tracking-[0.2em] uppercase text-[#5C2018]">
+          <p
+            class="font-[Cinzel] text-[10px] tracking-[0.2em] uppercase text-[#5C2018]"
+          >
             Scroll
           </p>
 
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5C2018" stroke-width="1.5">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#5C2018"
+            stroke-width="1.5"
+          >
             <path d="M12 5v14M5 12l7 7 7-7"></path>
           </svg>
         </div>
       </div>
 
       <!-- CURTAIN -->
-      <div id="curtainWrapper" class="absolute inset-0 z-20 pointer-events-none">
-        <div id="leftCurtain" class="curtain absolute top-0 left-0 h-full w-[50%]"></div>
-        <div id="rightCurtain" class="curtain absolute top-0 right-0 h-full w-[50%]"></div>
+      <div
+        id="curtainWrapper"
+        class="absolute inset-0 z-20 pointer-events-none"
+      >
+        <div
+          id="leftCurtain"
+          class="curtain absolute top-0 left-0 h-full w-[50%]"
+        ></div>
+        <div
+          id="rightCurtain"
+          class="curtain absolute top-0 right-0 h-full w-[50%]"
+        ></div>
       </div>
     </section>
 
     <!-- ================= REVEAL SECTION ================= -->
 
-    <section class="min-h-screen flex flex-col items-center justify-center py-10 px-6 bg-[#faf8f5]">
-
+    <section
+      class="min-h-screen flex flex-col items-center justify-center py-10 px-6 bg-[#faf8f5]"
+    >
       <!-- Instruction -->
       <div class="mb-6 flex flex-col items-center">
         <div class="relative flex items-center justify-center">
-          <div class="absolute w-10 h-10 rounded-full border border-[#5C2018]/30 scale-140"></div>
+          <div
+            class="absolute w-10 h-10 rounded-full border border-[#5C2018]/30 scale-140"
+          ></div>
 
-          <div class="w-10 h-10 rounded-full flex items-center justify-center bg-[#5C2018]/10 border border-[#5C2018]/20">
+          <div
+            class="w-10 h-10 rounded-full flex items-center justify-center bg-[#5C2018]/10 border border-[#5C2018]/20"
+          >
             ❤️
           </div>
         </div>
 
-        <p class="mt-3 font-[Cinzel] text-xs tracking-wide text-[#5C2018]/70 text-center">
+        <p
+          class="mt-3 font-[Cinzel] text-xs tracking-wide text-[#5C2018]/70 text-center"
+        >
           Scratch all three circles to continue
         </p>
       </div>
@@ -139,53 +164,71 @@
           Reveal
         </h2>
 
-        <p class="font-[Cinzel] text-sm tracking-[0.15em] uppercase text-[#5C2018]">
+        <p
+          class="font-[Cinzel] text-sm tracking-[0.15em] uppercase text-[#5C2018]"
+        >
           Scratch to discover the date
         </p>
       </div>
 
       <!-- Scratch Cards -->
       <div class="flex gap-8 md:gap-12">
-
         <!-- DAY -->
         <div class="flex flex-col items-center">
-          <div class="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center bg-[#faf8f5]">
+          <div
+            class="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-[#faf8f5]"
+            >
               <span class="font-[Felipa] text-2xl md:text-3xl text-[#5C2018]">
                 10
               </span>
             </div>
 
-            <canvas class="absolute inset-0 w-full h-full cursor-pointer transition-opacity duration-700"></canvas>
+            <canvas
+              class="absolute inset-0 w-full h-full cursor-pointer transition-opacity duration-700"
+            ></canvas>
           </div>
         </div>
 
         <!-- MONTH -->
         <div class="flex flex-col items-center">
-          <div class="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center bg-[#faf8f5]">
+          <div
+            class="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-[#faf8f5]"
+            >
               <span class="font-[Felipa] text-2xl md:text-3xl text-[#5C2018]">
-                Sept
+                May
               </span>
             </div>
 
-            <canvas class="absolute inset-0 w-full h-full cursor-pointer transition-opacity duration-700"></canvas>
+            <canvas
+              class="absolute inset-0 w-full h-full cursor-pointer transition-opacity duration-700"
+            ></canvas>
           </div>
         </div>
 
         <!-- YEAR -->
         <div class="flex flex-col items-center">
-          <div class="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center bg-[#faf8f5]">
+          <div
+            class="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-[#faf8f5]"
+            >
               <span class="font-[Felipa] text-2xl md:text-3xl text-[#5C2018]">
-                2027
+                2026
               </span>
             </div>
 
-            <canvas class="absolute inset-0 w-full h-full cursor-pointer transition-opacity duration-700"></canvas>
+            <canvas
+              class="absolute inset-0 w-full h-full cursor-pointer transition-opacity duration-700"
+            ></canvas>
           </div>
         </div>
-
       </div>
     </section>
 
