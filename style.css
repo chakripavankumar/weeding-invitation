@@ -1,18 +1,23 @@
+/* ================= CURTAIN + HERO ================= */
+
 .curtain {
   background-image: url("./assets/curtain-closed.jpg");
   background-size: cover;
   background-position: center;
   will-change: transform;
 }
+
 #curtainWrapper {
   pointer-events: none;
-  overflow: hidden; /* Prevents overflow during animation */
+  overflow: hidden;
 }
+
 .hero-text {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease;
 }
+
 .hero-text.show {
   opacity: 1;
   transform: translateY(0);
@@ -27,25 +32,99 @@
 }
 
 @keyframes floatY {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(6px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(6px); }
+  100% { transform: translateY(0px); }
 }
 
 @keyframes pulse {
-  0% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* ================= SCRATCH UI ================= */
+
+/* WRAPPER */
+.scratch-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* DISC CONTAINER */
+.scratch-card {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  /* 🔥 BASE GOLD DEPTH */
+  background: radial-gradient(circle at 30% 30%, #fff8dc, #e0b75a 60%, #a8741f);
+
+  /* 🔥 REALISTIC METAL SHADOW */
+  box-shadow:
+    inset 0 6px 14px rgba(255,255,255,0.6),
+    inset 0 -10px 18px rgba(0,0,0,0.3),
+    0 12px 25px rgba(0,0,0,0.2);
+
+  /* ✨ subtle lift */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ✨ HOVER = PREMIUM FEEL */
+.scratch-card:hover {
+  transform: translateY(-4px) scale(1.03);
+
+  box-shadow:
+    inset 0 8px 16px rgba(255,255,255,0.7),
+    inset 0 -12px 22px rgba(0,0,0,0.35),
+    0 18px 35px rgba(0,0,0,0.25);
+}
+
+/* ✨ EXTRA METAL SHINE LAYER */
+.scratch-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at 25% 25%,
+    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.1) 40%,
+    rgba(0,0,0,0.2) 100%
+  );
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* CANVAS (SCRATCH LAYER) */
+.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 2;
+
+  transition: opacity 0.6s ease;
+
+  /* ✨ smoother interaction */
+  touch-action: none;
+  cursor: pointer;
+}
+
+/* DATE BELOW */
+.date-text {
+  font-family: "Felipa";
+  font-size: 24px;
+  color: #5c2018;
+
+  /* ✨ subtle elegance */
+  letter-spacing: 1px;
+  opacity: 0.9;
 }
