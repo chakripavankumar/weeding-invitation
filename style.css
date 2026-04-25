@@ -1,3 +1,9 @@
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 /* ================= CURTAIN + HERO ================= */
 
 .curtain {
@@ -54,7 +60,16 @@
     opacity: 0.5;
   }
 }
-
+@keyframes glow {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 /* ================= SCRATCH UI ================= */
 
 /* WRAPPER */
@@ -141,4 +156,8 @@
   /* ✨ subtle elegance */
   letter-spacing: 1px;
   opacity: 0.9;
+}
+
+canvas[style*="opacity: 0"] + div span {
+  animation: glow 0.8s ease forwards;
 }

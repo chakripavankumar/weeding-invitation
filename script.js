@@ -57,11 +57,14 @@ function revealText() {
 
 /* ================= SCRATCH LOGIC ================= */
 
-document.querySelectorAll("canvas").forEach((canvas) => {
+const canvases = document.querySelectorAll("canvas");
+let globalRevealed = false;
+
+canvases.forEach((canvas) => {
   const ctx = canvas.getContext("2d");
 
   let drawing = false;
-  let revealed = false;
+  let scratchCount = 0;
 
   const img = new Image();
   img.src = "./assets/gold-texture.png";
@@ -69,14 +72,13 @@ document.querySelectorAll("canvas").forEach((canvas) => {
   function drawLayer() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // ✅ FIX 1: PERFECT CENTER CROP
     const size = Math.min(img.width, img.height);
     const sx = (img.width - size) / 2;
     const sy = (img.height - size) / 2;
 
     ctx.drawImage(img, sx, sy, size, size, 0, 0, canvas.width, canvas.height);
 
-    // ✅ FIX 2: FORCE PERFECT CIRCLE MASK
+    // circle mask
     ctx.globalCompositeOperation = "destination-in";
     ctx.beginPath();
     ctx.arc(
@@ -86,12 +88,10 @@ document.querySelectorAll("canvas").forEach((canvas) => {
       0,
       Math.PI * 2,
     );
-    ctx.closePath();
     ctx.fill();
 
-    // ✅ FIX 3: METAL SHINE
+    // shine
     ctx.globalCompositeOperation = "overlay";
-
     const gradient = ctx.createRadialGradient(
       canvas.width * 0.3,
       canvas.height * 0.3,
@@ -102,7 +102,6 @@ document.querySelectorAll("canvas").forEach((canvas) => {
     );
 
     gradient.addColorStop(0, "rgba(255,255,255,0.35)");
-    gradient.addColorStop(0.4, "rgba(255,255,255,0.1)");
     gradient.addColorStop(1, "rgba(0,0,0,0.25)");
 
     ctx.fillStyle = gradient;
@@ -119,13 +118,12 @@ document.querySelectorAll("canvas").forEach((canvas) => {
     if (img.complete) drawLayer();
   }
 
-  img.onload = drawLayer;
-
+  img.onload = setupCanvas;
   setupCanvas();
-  window.addEventListener("resize", setupCanvas);
 
-  // ✅ FIX 4: SOFT SCRATCH
   function scratch(x, y) {
+    if (globalRevealed) return;
+
     ctx.globalCompositeOperation = "destination-out";
 
     const radius = 22;
@@ -140,47 +138,24 @@ document.querySelectorAll("canvas").forEach((canvas) => {
     ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.fill();
 
-    checkReveal();
-  }
+    scratchCount++;
 
-  function getScratchedPercent() {
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    let cleared = 0;
-
-    for (let i = 3; i < imageData.data.length; i += 4) {
-      if (imageData.data[i] === 0) cleared++;
-    }
-
-    return cleared / (imageData.data.length / 4);
-  }
-
-  function checkReveal() {
-    if (revealed) return;
-
-    if (getScratchedPercent() > 0.6) {
-      revealed = true;
-
-      canvas.style.opacity = "0";
-
-      setTimeout(() => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.style.display = "none";
-      }, 700);
+    // 🔥 LOWER THRESHOLD (IMPORTANT)
+    if (scratchCount > 20) {
+      globalRevealAll();
     }
   }
 
-  /* DESKTOP */
+  /* EVENTS */
   canvas.addEventListener("mousedown", () => (drawing = true));
   canvas.addEventListener("mouseup", () => (drawing = false));
 
   canvas.addEventListener("mousemove", (e) => {
     if (!drawing) return;
-
     const rect = canvas.getBoundingClientRect();
     scratch(e.clientX - rect.left, e.clientY - rect.top);
   });
 
-  /* MOBILE */
   canvas.addEventListener("touchstart", () => (drawing = true));
   canvas.addEventListener("touchend", () => (drawing = false));
 
@@ -190,3 +165,38 @@ document.querySelectorAll("canvas").forEach((canvas) => {
     scratch(t.clientX - rect.left, t.clientY - rect.top);
   });
 });
+
+// 🔥 FINAL GLOBAL REVEAL
+function globalRevealAll() {
+  if (globalRevealed) return;
+
+  globalRevealed = true;
+
+  document.querySelectorAll("canvas").forEach((c) => {
+    c.style.opacity = "0";
+
+    setTimeout(() => {
+      const ctx = c.getContext("2d");
+      ctx.clearRect(0, 0, c.width, c.height);
+      c.style.display = "none";
+    }, 600);
+  });
+
+  triggerCelebration();
+
+  const msg = document.getElementById("finalMessage");
+  setTimeout(() => {
+    msg.style.opacity = "1";
+    msg.style.transform = "scale(1.05)";
+  }, 500);
+}
+
+function triggerCelebration() {
+  const container = document.getElementById("effectsContainer");
+
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement("div");
+
+    container.appendChild(el);
+  }
+}

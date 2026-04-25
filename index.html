@@ -20,7 +20,7 @@
     <!-- ================= HERO ================= -->
     <section
       id="hero"
-      class="relative h-[100svh] w-full overflow-hidden cursor-pointer min-h-screen"
+      class="relative h-screen w-screen overflow-hidden cursor-pointer min-h-screen"
     >
       <!-- VIDEO -->
       <video
@@ -57,33 +57,35 @@
       <!-- CONTENT -->
       <div
         id="heroContent"
-        class="absolute inset-0 flex items-center justify-center text-center z-20 opacity-0 transition-opacity duration-700 px-4"
+        class="absolute inset-0 flex items-center justify-center text-center z-10 opacity-0 transition-opacity duration-700 px-4"
       >
         <div
-          class="space-y-2 sm:space-y-4 max-w-[600px] w-full mx-auto mt-[18vh]"
+          id="contentWrapper"
+          class="space-y-2 sm:space-y-4 max-w-[600px] w-full mx-auto"
         >
           <p
-            class="hero-text font-[Cinzel] text-[12px] sm:text-[18px] tracking-wide text-[#7a1f1f]"
+            class="hero-text font-[Cinzel] text-[12px] sm:text-[18px] tracking-wide text-[#7a1f1f] leading-snug"
           >
-            You are cordially invited to celebrate the wedding of
+            You are cordially invited to <br class="sm:hidden" />
+            celebrate the wedding of
           </p>
 
           <h1
-            class="hero-text font-[Felipa] text-[32px] sm:text-[60px] text-[#7a1f1f]"
+            class="hero-text font-[Felipa] text-[32px] sm:text-[60px] text-[#7a1f1f] leading-tight"
           >
             Reshma Satya
           </h1>
 
-          <span class="hero-text block text-lg text-[#7a1f1f]">&</span>
+          <span class="hero-text block text-lg text-[#7a1f1f] my-1">&</span>
 
           <h1
-            class="hero-text font-[Felipa] text-[32px] sm:text-[60px] text-[#7a1f1f]"
+            class="hero-text font-[Felipa] text-[32px] sm:text-[60px] text-[#7a1f1f] leading-tight"
           >
-            Phani Kumar Viyyuri
+            Phani Kumar
           </h1>
 
           <p
-            class="hero-text font-[Cinzel] text-[11px] sm:text-[16px] tracking-wide text-[#7a1f1f]"
+            class="hero-text font-[Cinzel] text-[11px] sm:text-[16px] tracking-wide text-[#7a1f1f] leading-relaxed max-w-[90%] mx-auto"
           >
             We would like to invite you to celebrate with us the most special
             day of our life.
@@ -135,7 +137,7 @@
     <!-- ================= REVEAL SECTION ================= -->
 
     <section
-      class="min-h-screen flex flex-col items-center justify-center py-10 px-6 bg-[#faf8f5]"
+      class="relative min-h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center py-10 px-6 bg-[#faf8f5]"
     >
       <!-- Instruction -->
       <div class="mb-6 flex flex-col items-center">
@@ -181,8 +183,8 @@
             <div
               class="absolute inset-0 flex items-center justify-center bg-[#faf8f5]"
             >
-              <span class="font-[Felipa] text-2xl md:text-3xl text-[#5C2018]">
-                10
+              <span class="font-[Cinzel] text-2xl md:text-3xl text-[#5C2018]">
+                13
               </span>
             </div>
 
@@ -200,7 +202,7 @@
             <div
               class="absolute inset-0 flex items-center justify-center bg-[#faf8f5]"
             >
-              <span class="font-[Felipa] text-2xl md:text-3xl text-[#5C2018]">
+              <span class="font-[Cinzel] text-2xl md:text-3xl text-[#5C2018]">
                 May
               </span>
             </div>
@@ -219,7 +221,7 @@
             <div
               class="absolute inset-0 flex items-center justify-center bg-[#faf8f5]"
             >
-              <span class="font-[Felipa] text-2xl md:text-3xl text-[#5C2018]">
+              <span class="font-[Cinzel] text-2xl md:text-3xl text-[#5C2018]">
                 2026
               </span>
             </div>
@@ -230,8 +232,17 @@
           </div>
         </div>
       </div>
+      <p
+        id="finalMessage"
+        class="mt-10 font-[Felipa] text-3xl md:text-5xl text-[#5C2018] opacity-0 transition-all duration-700"
+      >
+        We're getting married 💍
+      </p>
     </section>
-
+    <div
+      id="effectsContainer"
+      class="fixed inset-0 pointer-events-none z-50 overflow-hidden"
+    ></div>
     <script src="script.js"></script>
   </body>
 </html>
